@@ -163,11 +163,13 @@ app.get('/co', function(req, res) {
         console.log('coaf teste ');
         (async() => {
             const browser = await puppeteer.launch({
+                ignoreHTTPSErrors: true,
+                headless: true,
                 args: ['--no-sandbox', '--disable-setuid-sandbox','--disable-dev-shm-usage']
             });
 
             const page = await browser.newPage();
-            await page.goto('https://siscoaf.fazenda.gov.br/siscoaf-internet/pages/consultaPO/consultarPO.jsf');
+            await page.goto('https://siscoaf.fazenda.gov.br/siscoaf-internet/pages/consultaPO/consultarPO.jsf',{  ignoreSSL: true ,timeout: 0, waitUntil: 'networkidle2' });
             await page.screenshot().then(function(buffer) {
                 res.setHeader('Content-Disposition', 'attachment;filename="' + urlToScreenshot + '.png"');
                 res.setHeader('Content-Type', 'image/png');
