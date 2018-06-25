@@ -165,7 +165,7 @@ app.get('/co', function(req, res) {
             const browser = await puppeteer.launch({
                 ignoreHTTPSErrors: true,
                 headless: true,
-                args: ['--no-sandbox', '--disable-setuid-sandbox','--disable-dev-shm-usage','--ignore-certificate-errors','--ignore-certificate-errors-spki-list ']
+                args: ['--no-sandbox', '--disable-setuid-sandbox','--disable-dev-shm-usage','--ignore-certificate-errors','--ignore-certificate-errors-spki-list ','--ignore-urlfetcher-cert-requests ']
             });
 
             const page = await browser.newPage();
@@ -225,7 +225,7 @@ app.get('/coaf', (req, res) => {
                     await page.click(CAPTCHA);
                     console.log("passou4");
                     await page.keyboard.type(solucao);
-                    await page.waitFor(300);
+                    await page.waitFor(1000);
                     await page.click(BUSCAR);
                     
                     await page.waitForNavigation();
