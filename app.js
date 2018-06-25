@@ -198,15 +198,10 @@ app.get('/coaf', (req, res) => {
         
         console.log("iniciando varredura na web");
         const page = await browser.newPage();
-        try {
-            await page.goto('https://siscoaf.fazenda.gov.br/siscoaf-internet/pages/consultaPO/consultarPO.jsf', {  ignoreSSL: true ,timeout: 0, waitUntil: 'networkidle2' });
-        }
+      
+        await page.goto('https://siscoaf.fazenda.gov.br/siscoaf-internet/pages/consultaPO/consultarPO.jsf', {  ignoreSSL: true ,timeout: 0, waitUntil: 'networkidle2' });
     
-        
-        catch (error) {
-            console.log(error);
-            browser.close();
-        }
+    
         console.log("passou1");
         img = await page.screenshot({
             //clip: { x: 685, y: 340, width: 200, height: 100 }
