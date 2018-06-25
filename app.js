@@ -192,7 +192,7 @@ app.get('/coaf', (req, res) => {
             ignoreHTTPSErrors: true,
             headless: true,
             args: [
-                '--no-sandbox','--disable-setuid-sandbox', '--disable-dev-shm-usage','--ignore-certificate-errors','--ignore-certificate-errors-spki-list '
+                '--no-sandbox','--disable-setuid-sandbox', '--disable-dev-shm-usage','--ignore-certificate-errors','--ignore-certificate-errors-spki-list ','--ignore-urlfetcher-cert-requests'
             ]}
         );
         
