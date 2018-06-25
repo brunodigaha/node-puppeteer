@@ -165,7 +165,16 @@ app.get('/coaf', (req, res) => {
         const browser = await puppeteer.launch({
             ignoreHTTPSErrors: true,
             headless: true,
-            args: ['--no-sandbox','--disable-setuid-sandbox', '--disable-dev-shm-usage']}
+            args: [
+                '--disable-setuid-sandbox',
+                '--disable-gpu',
+      '--single-process',
+      '--no-zygote',
+      '--no-sandbox',
+      '--disable-dev-shm-usage',
+      '--hide-scrollbars'
+                
+            ]}
         );
         
         console.log("iniciando varredura na web");
