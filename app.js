@@ -166,21 +166,14 @@ app.get('/coaf', (req, res) => {
             ignoreHTTPSErrors: true,
             headless: true,
             args: [
-                '--disable-setuid-sandbox',
-                '--disable-gpu',
-      '--single-process',
-      '--no-zygote',
-      '--no-sandbox',
-      '--disable-dev-shm-usage',
-      '--hide-scrollbars'
-                
+                '--no-sandbox','--disable-setuid-sandbox', '--disable-dev-shm-usage'
             ]}
         );
         
         console.log("iniciando varredura na web");
         const page = await browser.newPage();
         try {
-            await page.goto('https://siscoaf.fazenda.gov.br/siscoaf-internet/pages/consultaPO/consultarPO.jsf', { timeout: 0 });
+            await page.goto('https://siscoaf.fazenda.gov.br/siscoaf-internet/pages/consultaPO/consultarPO.jsf', {  ignoreSSL: true ,timeout: 0, waitUntil: 'networkidle2' });
         }
     
         
