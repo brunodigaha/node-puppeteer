@@ -165,7 +165,7 @@ app.get('/co', function(req, res) {
             const browser = await puppeteer.launch({
                 ignoreHTTPSErrors: true,
                 headless: true,
-                args: ['--no-sandbox', '--disable-setuid-sandbox','--disable-dev-shm-usage','--ignore-certificate-errors','--ignore-certificate-errors-spki-list ','--ignore-urlfetcher-cert-requests ']
+                args: ['--no-sandbox', '--disable-setuid-sandbox','--disable-dev-shm-usage','--ignore-certificate-errors','--ignore-urlfetcher-cert-requests ']
             });
 
             const page = await browser.newPage();
@@ -192,7 +192,7 @@ app.get('/coaf', (req, res) => {
             ignoreHTTPSErrors: true,
             headless: true,
             args: [
-                '--no-sandbox','--disable-setuid-sandbox', '--disable-dev-shm-usage','--ignore-certificate-errors','--ignore-certificate-errors-spki-list ','--ignore-urlfetcher-cert-requests'
+                '--no-sandbox','--disable-setuid-sandbox', '--disable-dev-shm-usage','--ignore-certificate-errors','--ignore-urlfetcher-cert-requests'
             ]}
         );
         
