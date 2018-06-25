@@ -192,8 +192,10 @@ app.get('/coaf', (req, res) => {
             ignoreHTTPSErrors: true,
             headless: true,
             args: [
-                '--no-sandbox','--disable-setuid-sandbox', '--disable-dev-shm-usage','--ignore-certificate-errors','--enable-features=NetworkService'
-            ]}
+                '--no-sandbox','--disable-setuid-sandbox', '--disable-dev-shm-usage','--ignore-certificate-errors'
+            ],
+            dumpio: false
+        },
         );
         
         console.log("iniciando varredura na web");
@@ -201,11 +203,11 @@ app.get('/coaf', (req, res) => {
       
         await page.goto('https://siscoaf.fazenda.gov.br/siscoaf-internet/pages/consultaPO/consultarPO.jsf', {  timeout: 0, waitUntil: 'networkidle0' });
     
-        await page.setRequestInterception(true);
+/*         await page.setRequestInterception(true);
         await page.on('request', interceptedRequest => {
             console.log(interceptedRequest.url());
             interceptedRequest.continue();
-        });
+        }); */
         console.log("passou1");
         img = await page.screenshot({
             //clip: { x: 685, y: 340, width: 200, height: 100 }
@@ -240,6 +242,9 @@ app.get('/coaf', (req, res) => {
                         res.send(JSON.stringify({ status: x }));
                         solucao = 'CAPCHA_NOT_READY';
                     })
+
+                 /*    const html = await page.content();
+                    console.log(html); */
     
                 
                     await browser.close().then(console.log('fechou'));
