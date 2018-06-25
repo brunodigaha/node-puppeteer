@@ -156,6 +156,30 @@ app.get('/', function(req, res) {
 
 });
 
+app.get('/co', function(req, res) {
+
+
+
+        console.log('coaf teste ');
+        (async() => {
+            const browser = await puppeteer.launch({
+                args: ['--no-sandbox', '--disable-setuid-sandbox','--disable-dev-shm-usage']
+            });
+
+            const page = await browser.newPage();
+            await page.goto('https://siscoaf.fazenda.gov.br/siscoaf-internet/pages/consultaPO/consultarPO.jsf');
+            await page.screenshot().then(function(buffer) {
+                res.setHeader('Content-Disposition', 'attachment;filename="' + urlToScreenshot + '.png"');
+                res.setHeader('Content-Type', 'image/png');
+                res.send(buffer)
+            });
+
+            await browser.close().then(console.log('fechou'));
+        })();
+
+
+});
+
 app.get('/coaf', (req, res) => {
 
     var searhCNPJ = req.query.cnpj;
