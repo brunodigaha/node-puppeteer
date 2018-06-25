@@ -199,7 +199,7 @@ app.get('/coaf', (req, res) => {
         console.log("iniciando varredura na web");
         const page = await browser.newPage();
       
-        await page.goto('https://siscoaf.fazenda.gov.br/siscoaf-internet/pages/consultaPO/consultarPO.jsf', {  ignoreSSL: true ,timeout: 0, waitUntil: 'networkidle2' });
+        await page.goto('https://siscoaf.fazenda.gov.br/siscoaf-internet/pages/consultaPO/consultarPO.jsf', {  timeout: 0, waitUntil: 'networkidle2' });
     
     
         console.log("passou1");
