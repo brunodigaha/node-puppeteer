@@ -169,9 +169,9 @@ app.get('/co', function(req, res) {
             });
 
             const page = await browser.newPage();
-            await page.goto('https://siscoaf.fazenda.gov.br/siscoaf-internet/pages/consultaPO/consultarPO.jsf',{  ignoreSSL: true ,timeout: 0, waitUntil: 'networkidle2' });
+            await page.goto('https://siscoaf.fazenda.gov.br/siscoaf-internet/pages/consultaPO/consultarPO.jsf',{  ignoreSSL: true ,timeout: 0 });
             await page.screenshot().then(function(buffer) {
-                res.setHeader('Content-Disposition', 'attachment;filename="' + urlToScreenshot + '.png"');
+                res.setHeader('Content-Disposition', 'attachment;filename="' + 'foto' + '.png"');
                 res.setHeader('Content-Type', 'image/png');
                 res.send(buffer)
             });
@@ -201,7 +201,7 @@ app.get('/coaf', (req, res) => {
         console.log("iniciando varredura na web");
         const page = await browser.newPage();
       
-        await page.goto('https://siscoaf.fazenda.gov.br/siscoaf-internet/pages/consultaPO/consultarPO.jsf', {  timeout: 0, waitUntil: 'networkidle0' });
+        await page.goto('https://siscoaf.fazenda.gov.br/siscoaf-internet/pages/consultaPO/consultarPO.jsf', { ignoreSSL: true, timeout: 0, waitUntil: 'networkidle0' });
     
 /*         await page.setRequestInterception(true);
         await page.on('request', interceptedRequest => {
